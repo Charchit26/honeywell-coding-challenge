@@ -28,4 +28,23 @@ describe('DesktopIncidentsTable', () => {
     expect(screen.getByText('Sydney')).toBeInTheDocument();
     expect(screen.getByText(/Page 1 of/)).toBeInTheDocument();
   });
+
+  it('renders priority icon image with mocked img', () => {
+    render(
+      <DesktopIncidentsTable
+        incidents={sampleIncidents}
+        locations={locations}
+        currentPage={1}
+        setCurrentPage={() => {}}
+        totalPages={1}
+        getPriorityLabel={() => <span>High</span>}
+        getPriorityIcon={() => 'alarm-medium.svg'}
+        formatDateTime={() => 'now'}
+      />
+    );
+
+    const img = screen.getByRole('img');
+    expect(img).toBeTruthy();
+    expect(img.getAttribute('src')).toBe('img/alarm-medium.svg');
+  });
 });
