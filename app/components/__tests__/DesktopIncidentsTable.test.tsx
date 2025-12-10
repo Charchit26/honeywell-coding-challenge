@@ -44,7 +44,6 @@ describe('DesktopIncidentsTable', () => {
     );
 
     const img = screen.getByRole('img');
-    expect(img).toBeTruthy();
     expect(img.getAttribute('src')).toBe('img/alarm-medium.svg');
   });
 });
